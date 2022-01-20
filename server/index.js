@@ -3,8 +3,8 @@ const app = express()
 const dotenv = require('dotenv')
 dotenv.config()
 
-app.post('/', (req, res) => {
-  const grades = req.body
+app.get('/', (req, res) => {
+  res.send('aloha')
 })
 
 const PORT = process.env.PORT || 3001
