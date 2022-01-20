@@ -11,6 +11,7 @@
   "author": "Ido Strauss <strauss02@hotmail.co.il>",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1060.0",
     "cors": "^2.8.5",
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
