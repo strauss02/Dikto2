@@ -26,4 +26,21 @@ router.get('/:word', (req, res) => {
   })
 })
 
+router.get('/:word/:pos', (req, res) => {
+  const params = {
+    TableName: 'dictionary',
+    Key: {
+      Word: req.params.word.toUpperCase(),
+      Pos: req.params.pos,
+    },
+  }
+  db.get(params, (err, data) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(data)
+    }
+  })
+})
+
 module.exports = router
