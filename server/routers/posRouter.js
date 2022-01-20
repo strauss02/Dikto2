@@ -14,10 +14,46 @@ const posByNum = {
   8: 'interj.',
 }
 
-router.get('/:part', (req, res) => {
-  posByNum.req.params.part
+router.get('/:part', async (req, res) => {
+  console.log(req.query)
+  // if request is sent with query letter then search by letter
+  if (Object.keys(req.query).length === 0 && req.query.constructor === Object) {
+    console.log(req.params.part)
+    const pos = posByNum[Number(req.params.part)]
+
+    params = {
+      TableName: 'dictionary',
+      IndexName: 'Pos-Word-index',
+      KeyConditionExpression: '#pos = :pos',
+      ExpressionAttributeNames: {
+        '#pos': 'Pos',
+      },
+      ExpressionAttributeValues: {
+        ':pos': pos,
+      },
+      Limit: 100,
+    }
+
+    let entries = []
+
+    db.query(params, (err, data) => {
+      if (err) {
+        console.log('error', err)
+        res.send('error')
+      } else {
+        console.log('success')
+        entries = data.Items
+        console.log(entries)
+        return res.send(data.Items)
+      }
+    })
+  } else {
+    res.send('shit')
+  }
 })
 
-router.get('/:part?letter', (req, res) => {})
+function getRandomWord(arr) {
+  arr.length
+}
 
 module.exports = router
