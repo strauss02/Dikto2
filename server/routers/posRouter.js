@@ -16,7 +16,6 @@ const posByNum = {
 
 router.get('/:part', async (req, res) => {
   const pos = posByNum[Number(req.params.part)]
-  req.query.letter = req.query.letter.toUpperCase()
   const params = {
     TableName: 'dictionary',
     IndexName: 'Pos-Word-index',
@@ -30,7 +29,10 @@ router.get('/:part', async (req, res) => {
     Limit: 10,
   }
   // if request is sent with query letter, search by letter
-  if (Object.keys(req.query).length === 0 && req.query.constructor === Object) {
+  if (
+    (Object.keys(req.query).length === 0 && req.query.constructor === Object) ||
+    req.query.letter === undefined
+  ) {
     db.query(params, (err, data) => {
       if (err) {
         console.log('error', err)
@@ -43,6 +45,8 @@ router.get('/:part', async (req, res) => {
       }
     })
   } else {
+    req.query.letter = req.query.letter.toUpperCase()
+
     const Bparams = {
       TableName: 'dictionary',
       IndexName: 'Pos-Word-index',
