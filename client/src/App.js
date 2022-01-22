@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
@@ -7,11 +7,11 @@ import '@fontsource/roboto/700.css'
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/:word" element={<WordView />} />
+      <Route path="/:word/:pos" element={<WordView />} />
+      <Route path="/pos/:part" element={<WordView />} />
+    </Routes>
   )
 }
 
