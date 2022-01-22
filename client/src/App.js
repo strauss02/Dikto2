@@ -1,5 +1,4 @@
 import './App.css'
-import { render } from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
