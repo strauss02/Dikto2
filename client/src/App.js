@@ -4,14 +4,19 @@ import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
+import WordView from './Components/WordView'
+import HomeView from './Components/HomeView'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/:word" element={<WordView />} />
-      <Route path="/:word/:pos" element={<WordView />} />
-      <Route path="/pos/:part" element={<WordView />} />
-    </Routes>
+    <div>
+      <Routes>
+        <Route path="/" element={<HomeView />} />
+        <Route path="/:word" element={<WordView />} />
+        <Route path="/:word/:pos" element={<WordView word="Horse" />} />
+        <Route path="/pos/:part" element={<WordView />} />
+      </Routes>
+    </div>
   )
 }
 
