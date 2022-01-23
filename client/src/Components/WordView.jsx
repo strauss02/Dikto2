@@ -2,7 +2,7 @@ import { Typography } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { API_URL } from '../Utils/config'
 import { fetchWordData } from '../Utils/utils'
 import WordCard from './WordCard'
@@ -19,12 +19,15 @@ function WordView(props) {
   }, [])
 
   console.log(wordEntries)
-  return (
+
+  return wordEntries.length !== 1 ? (
     <div>
       {wordEntries.map((entry) => {
         return <WordCard entry={entry} />
       })}
     </div>
+  ) : (
+    <Navigate to={`/${wordEntries[0].Word}/${wordEntries[0].Pos} `} />
   )
 }
 
