@@ -4,7 +4,9 @@ const dotenv = require('dotenv')
 const wordRouter = require('./routers/wordRouter')
 const posRouter = require('./routers/posRouter')
 dotenv.config()
+const cors = require('cors')
 
+app.use(cors())
 app.use('/word', wordRouter)
 app.use('/pos', posRouter)
 
