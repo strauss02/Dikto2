@@ -1,3 +1,3 @@
-![screenshot](./scrnsht1)
-![screenshot](./scrnsht2)
-![screenshot](./scrnsht3)
+![screenshot](./scrnsht1.png)
+![screenshot](./scrnsht2.png)
+![screenshot](./scrnsht3.png)
