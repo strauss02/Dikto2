@@ -32,7 +32,7 @@ function PosView() {
       >
         {Object.entries(posByNum).map((entry) => {
           return (
-            <Link to={`pos/${entry[0]}`}>
+            <Link to={`/pos/${entry[0]}`}>
               <Button variant="contained">{entry[1]}</Button>
             </Link>
           )

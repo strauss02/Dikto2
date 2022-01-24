@@ -4,16 +4,25 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { API_URL } from '../Utils/config'
-import { fetchWordData } from '../Utils/utils'
+import { fetchRandomWord, fetchWordData } from '../Utils/utils'
 import WordCard from './WordCard'
 function WordView(props) {
-  let { word } = useParams()
+  const params = useParams()
+
   const [wordEntries, setWordEntries] = useState([])
 
   useEffect(() => {
     async function getEntries() {
-      const entries = await fetchWordData(word)
-      setWordEntries(entries)
+      console.log(params)
+
+      if (params.word) {
+        let word = params.word
+        const entries = await fetchWordData(word)
+        setWordEntries(entries)
+      } else {
+        const entries = await fetchRandomWord(2)
+        setWordEntries([entries])
+      }
     }
     getEntries()
   }, [])
