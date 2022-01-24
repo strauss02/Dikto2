@@ -13,12 +13,26 @@ function HomeView() {
         alignItems: 'center',
       }}
     >
-      <Typography variant="h2"> Dikto </Typography>
-      <Typography>Vocabulary is a click away</Typography>
-      <Input onChange={(e) => setInputValue(e.target.value)}> </Input>
+      <Typography sx={{ color: 'white' }} variant="h2">
+        {' '}
+        Dikto{' '}
+      </Typography>
+      <Typography sx={{ color: 'white' }}>
+        Vocabulary is a click away
+      </Typography>
+      <Input
+        sx={{ mt: 3 }}
+        placeholder="Enter a word here"
+        onChange={(e) => setInputValue(e.target.value)}
+      ></Input>
       <Link to={`/${inputValue}`}>
         <Button sx={{ mt: 3 }} variant="contained">
           Go to word
+        </Button>
+      </Link>
+      <Link to={`/pos`}>
+        <Button sx={{ mt: 3 }} variant="outlined">
+          Parts of Speech
         </Button>
       </Link>
     </Box>

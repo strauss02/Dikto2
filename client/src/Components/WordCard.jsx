@@ -20,7 +20,6 @@ function WordCard({ entry }) {
         <Typography variant="body2">
           {entry.Definitions}
           <br />
-          {'"a benevolent smile"'}
         </Typography>
       </CardContent>
       <CardActions>
